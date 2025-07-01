@@ -1,0 +1,20 @@
+<div class="widget">
+    <div class="widget-header">
+        <!-- We can replace the html with <ng-content> and let the consumer to provide its own content; 
+
+        <div class="widget-title">Weather Forecast</div>
+        <div class="widget-sub-title">Currently in Ottawa, Ontario</div> 
+        
+        Also, inside this <ng-content>, we can provide default content to display, if the consumer doesn't provide any -->
+        <ng-content select="[slot='header']"></ng-content>
+
+
+    </div>
+    <div class="widget-content">
+
+        <ng-content>
+            <p class="no-content">No content provided...</p>
+        </ng-content>
+    </div>
+
+</div>

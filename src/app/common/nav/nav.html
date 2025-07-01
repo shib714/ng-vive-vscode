@@ -36,25 +36,12 @@
             <mat-list-item routerLink="app-weather" routerLinkActive="active">Content Projection</mat-list-item>
             <mat-divider></mat-divider>
         </mat-list>
-        <mat-list role="list">
-            <mat-list-item routerLink="app-products" routerLinkActive="active">Content Projection2 (Basic)</mat-list-item>
-            <mat-divider></mat-divider>
-        </mat-list>
-        <!-- ng-template demo -->
-        <mat-list role="list">
-            <mat-list-item routerLink="app-table" routerLinkActive="active">NgTemplate Demo(Basic)</mat-list-item>
-            <mat-divider></mat-divider>
-        </mat-list>
-        <!-- Dynamic component in Angular 20 with advanced new features-->
-        <mat-list role="list">
-            <mat-list-item routerLink="dynamic-app" routerLinkActive="active">Dynamic component</mat-list-item>
-            <mat-divider></mat-divider>
-        </mat-list>
+
 
     </mat-drawer>
     <mat-drawer-content class="app-container" (click)="drawer.close()">
         <main class="app-content">
-        <router-outlet></router-outlet>
+            <router-outlet></router-outlet>
         </main>
     </mat-drawer-content>
 </mat-drawer-container>
