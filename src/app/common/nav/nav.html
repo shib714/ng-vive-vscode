@@ -1,0 +1,60 @@
+<mat-toolbar>
+    <button mat-icon-button aria-label="nav icon-button with menu icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>Angular 20 using Copilot help </span>
+    <span class="nav-spacer"></span>
+    <button mat-icon-button class="nav-icon" aria-label="nav icon-button with share icon">
+        <mat-icon>logout</mat-icon>
+    </button>
+
+    <button mat-icon-button [mat-menu-trigger-for]="themeMenu">
+        <mat-icon>{{ themeService.selectedTheme()?.icon }}</mat-icon>
+    </button>
+    <mat-menu #themeMenu="matMenu">
+        @for(theme of themeService.getThemes(); track theme.name) {
+        <button [class.selected-theme]="themeService.selectedTheme()?.name === theme.name" mat-menu-item
+            (click)="themeService.setTheme(theme.name)">
+            <mat-icon>{{ theme.icon }}</mat-icon>
+            <span>{{ theme.name |titlecase}} </span>
+        </button> }
+    </mat-menu>
+</mat-toolbar>
+<mat-drawer-container class="container">
+    <mat-drawer #drawer class="nav-sidenav" mode="side">
+        <mat-list role="list">
+            <mat-list-item routerLink="home" routerLinkActive="active">Home</mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+
+        <mat-list role="list">
+            <mat-list-item routerLink="contacts" routerLinkActive="active">Contacts</mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+
+        <mat-list role="list">
+            <mat-list-item routerLink="app-weather" routerLinkActive="active">Content Projection</mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+        <mat-list role="list">
+            <mat-list-item routerLink="app-products" routerLinkActive="active">Content Projection2 (Basic)</mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+        <!-- ng-template demo -->
+        <mat-list role="list">
+            <mat-list-item routerLink="app-table" routerLinkActive="active">NgTemplate Demo(Basic)</mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+        <!-- Dynamic component in Angular 20 with advanced new features-->
+        <mat-list role="list">
+            <mat-list-item routerLink="dynamic-app" routerLinkActive="active">Dynamic component</mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+
+    </mat-drawer>
+    <mat-drawer-content class="app-container" (click)="drawer.close()">
+        <main class="app-content">
+        <router-outlet></router-outlet>
+        </main>
+    </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,30 @@
+<div class="contacts-container">
+    <div class="header">
+        <h1>Contacts</h1>
+        <button mat-raised-button color="primary" routerLink="/contacts/new" class="add-button">
+            <mat-icon>add</mat-icon>
+            Add Contact
+        </button>
+    </div>
+
+    @if (contactsService.sortedContacts().length === 0) {
+    <mat-card class="empty-state">
+        <mat-card-content>
+            <div class="empty-content">
+                <mat-icon class="empty-icon">contacts</mat-icon>
+                <h2>No contacts yet</h2>
+                <p>Start by adding your first contact</p>
+                <button mat-raised-button color="primary" routerLink="/contacts/new">
+                    Add Contact
+                </button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    } @else {
+    <div class="contacts-grid">
+        @for (contact of contactsService.sortedContacts(); track contact.id) {
+        <app-contact [contact]="contact" (onDelete)="deleteContact($event)" />
+        }
+    </div>
+    }
+</div>
