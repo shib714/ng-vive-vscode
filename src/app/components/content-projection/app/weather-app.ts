@@ -1,12 +1,13 @@
 import { Component } from "@angular/core";
 import { Widget } from "../widget/widget";
 import { WeatherContent } from "../weather-content/weather-content";
+import { WidgetContentDirective } from "../widget/widget-content.directive";
 
 
 @Component({
     selector: 'app-weather',
     standalone: true,
-    imports: [Widget, WeatherContent],
+    imports: [Widget, WeatherContent, WidgetContentDirective],
     template: `
     <div>
         <h1>Content ProjectionDemo: Weather App</h1>
@@ -20,10 +21,9 @@ import { WeatherContent } from "../weather-content/weather-content";
             <div class="temperature">Temperature: 21°C</div> 
             instead of html, we can use a component 
                 <weather-content></weather-content>
-            -->
-            <ng-template #widgetContent>
-                <weather-content></weather-content>
-            </ng-template>
+            -->  
+            <weather-content *appWidgetContentDirective></weather-content>
+
         </app-widget>
     </div>
     `,

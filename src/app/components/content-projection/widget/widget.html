@@ -29,7 +29,7 @@
     from the app-weather will not be destroyed when we hide it causing memory leaks. This is besause, the lifecycle 
     of this component (<weather-content></weather-content>) is controlled by the component where it is declared, 
     and not the component where it is projected. 
-    
+
     We can see this by checking the console log.
 
     Here, we should use <ng-template> and ngTemplateOutlet directive instead as below:
@@ -38,7 +38,7 @@
     -->
     @if(!this.hidden()) {
         <div class="widget-content">
-            <ng-template [ngTemplateOutlet]="content() || defaultContent"></ng-template>
+            <ng-template [ngTemplateOutlet]="content()?.templateRef || defaultContent"></ng-template>
             <ng-template #defaultContent>
                 <p class="no-content">No content provided...</p>
             </ng-template>
