@@ -7,14 +7,25 @@
         
         Also, inside this <ng-content>, we can provide default content to display, if the consumer doesn't provide any -->
         <ng-content select="[slot='header']"></ng-content>
+        <app-button class="action">
+            <ng-content ngProjectAs="[slot='icon']" select="[slot='action-icon']" />
+        </app-button>
 
 
     </div>
-    <div class="widget-content">
+    <!-- Avoid using <ng-content> in case you're using conditional blocks like if/else or switch/case  
+        Let's try to conditionally display the following <ng-content> like:
+        
+    -->
+    @if(!this.hidden()) {
+        <div class="widget-content">
+            <ng-content>
+                <p class="no-content">No content provided...</p>
+            </ng-content>
+        </div>
+    }
+    <button mat-flat-button  (click)="hidden.set(!hidden())">
+        {{ hidden() ? 'Show' : 'Hide' }} Content</button>
 
-        <ng-content>
-            <p class="no-content">No content provided...</p>
-        </ng-content>
-    </div>
-
+        
 </div>

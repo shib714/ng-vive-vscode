@@ -10,7 +10,8 @@ import { WeatherContent } from "../weather-content/weather-content";
     template: `
     <div>
         <h1>Content ProjectionDemo: Weather App</h1>
-        <app-widget>  
+        <app-widget> 
+            <i class="material-icons" slot="action-icon">refresh</i> 
             <ng-container ngProjectAs="[slot='header']" >      
                 <div class="widget-title">Weather Forecast</div>
                 <div class="widget-sub-title">Currently in Ottawa, Ontario</div>    
