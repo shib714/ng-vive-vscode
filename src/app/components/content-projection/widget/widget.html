@@ -16,7 +16,7 @@
     <!-- Avoid using <ng-content> in case you're using conditional blocks like if/else or switch/case  
         Let's try to conditionally display the following <ng-content> like:
         
-    -->
+    
     @if(!this.hidden()) {
         <div class="widget-content">
             <ng-content>
@@ -24,8 +24,29 @@
             </ng-content>
         </div>
     }
+    
+    However, with this approach, the content component (<weather-content></weather-content>) we projected 
+    from the app-weather will not be destroyed when we hide it causing memory leaks. This is besause, the lifecycle 
+    of this component is controlled by the component where it is declared, not the component where it is projected.
+    We can see this by checking the console log.
+
+    Here, we should use <ng-template> and ngTemplateOutlet directive instead as below:
+    Also, we need to wrap the <weather-content></weather-content> with <ng-template> tag as well, 
+    and give it a template reference variable (content) in the widget.ts file so that it can be used with ngTemplateOutlet directive.
+    -->
+    @if(!this.hidden()) {
+        <div class="widget-content">
+            <ng-template [ngTemplateOutlet]="content() || defaultContent"></ng-template>
+            <ng-template #defaultContent>
+                <p class="no-content">No content provided...</p>
+            </ng-template>
+        </div>
+    }
+
+
+
     <button mat-flat-button  (click)="hidden.set(!hidden())">
         {{ hidden() ? 'Show' : 'Hide' }} Content</button>
 
-        
+
 </div>

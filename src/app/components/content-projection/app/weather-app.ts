@@ -21,7 +21,9 @@ import { WeatherContent } from "../weather-content/weather-content";
             instead of html, we can use a component 
                 <weather-content></weather-content>
             -->
-             <weather-content></weather-content>
+            <ng-template #widgetContent>
+                <weather-content></weather-content>
+            </ng-template>
         </app-widget>
     </div>
     `,

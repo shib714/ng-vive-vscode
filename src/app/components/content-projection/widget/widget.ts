@@ -14,6 +14,6 @@ import { Button } from "../button/button";
 
 export class Widget { 
     hidden = signal<boolean>(false);
-    //content = contentChild<TemplateRef<unknown>>('widgetContent');
+    content = contentChild<TemplateRef<unknown>>('widgetContent');
     //content = contentChild(WidgetContentDirective);
 }
