@@ -14,6 +14,7 @@ import { Button } from "../button/button";
 
 export class Widget { 
     hidden = signal<boolean>(false);
+    //we get the reference of the template variable widgetContent defined in the widget-app component
     content = contentChild<TemplateRef<unknown>>('widgetContent');
     //content = contentChild(WidgetContentDirective);
 }

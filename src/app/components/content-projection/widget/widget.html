@@ -27,7 +27,9 @@
     
     However, with this approach, the content component (<weather-content></weather-content>) we projected 
     from the app-weather will not be destroyed when we hide it causing memory leaks. This is besause, the lifecycle 
-    of this component is controlled by the component where it is declared, not the component where it is projected.
+    of this component (<weather-content></weather-content>) is controlled by the component where it is declared, 
+    and not the component where it is projected. 
+    
     We can see this by checking the console log.
 
     Here, we should use <ng-template> and ngTemplateOutlet directive instead as below:
