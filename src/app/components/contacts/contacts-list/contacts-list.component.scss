@@ -13,7 +13,7 @@
 
 .header h1 {
     margin: 0;
-    color: var(--text-primary);
+    color: var(--mat-sys-on-surface);
     font-size: 2.5rem;
     font-weight: 300;
 }
@@ -40,18 +40,18 @@
     font-size: 4rem;
     width: 4rem;
     height: 4rem;
-    color: var(--text-disabled);
+    color: var(--mat-sys-on-surface-variant);
 }
 
 .empty-content h2 {
     margin: 0;
-    color: var(--text-secondary);
+    color: var(--mat-sys-on-surface-variant);
     font-weight: 300;
 }
 
 .empty-content p {
     margin: 0;
-    color: var(--text-disabled);
+    color: var(--mat-sys-on-surface-variant);
 }
 
 .contacts-grid {

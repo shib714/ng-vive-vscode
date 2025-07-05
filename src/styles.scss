@@ -47,15 +47,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     //min-height: 100vh;
 
 }
-
-
 .app-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
-
-
 .app-content {
   flex: 1;
   padding: 15px;
