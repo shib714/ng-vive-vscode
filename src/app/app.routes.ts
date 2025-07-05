@@ -27,10 +27,15 @@ export const routes: Routes = [
             .then(m => m.ContactFormComponent), title: 'Edit Contact'
     },
 
-        {
+    {
         path: 'app-weather',
         loadComponent: () => import('./components/content-projection/app/weather-app')
             .then(m => m.WeatherApp), title: 'Content Projection'
+    },
+        {
+        path: 'app-table',
+        loadComponent: () => import('./components/ng-template/app-table/app-table')
+            .then(m => m.AppTable), title: 'Content Projection'
     },
 
 ];

@@ -1,0 +1,30 @@
+  @use '@angular/material' as mat;
+ ::ng-deep table {
+     @include mat.theme((color: mat.$cyan-palette, ));
+     width: 100%;
+     margin: 2rem 0;
+     padding: 10px;
+     border: #083eb4 1px solid;
+     border-collapse: collapse; 
+     box-shadow: 0 0 20px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
+
+     thead {
+         tr {
+             background-color: var(--mat-sys-outline-variant);
+             
+             color: #ffffff;
+             text-align: left;
+         }
+     }
+
+     tbody tr:hover {
+         background-color: #f6f6f6;
+     }
+
+     th,
+     td {
+        border: var(--mat-sys-outline-variant) 1px solid;
+         padding: 1rem;
+     }
+ }
+
