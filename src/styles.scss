@@ -1,13 +1,29 @@
 @use '@angular/material' as mat;
 
-html {@include mat.theme((color: mat.$cyan-palette,typography: Roboto,density: -3,));
+html {
+    @include mat.theme((color: mat.$cyan-palette,typography: Roboto,density: -3,));
     @include mat.icon-button-overrides((icon-color: var(--mat-sys-primary),));
 }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.darkMode { @include mat.theme(
+
+/* CSS Custom Properties for consistent theming */
+:root {
+  --text-primary: rgba(0, 0, 0, 0.87);
+  --text-secondary: rgba(0, 0, 0, 0.6);
+  --text-disabled: rgba(0, 0, 0, 0.38);
+  --shadow-color-dark: rgba(0, 0, 0, 0.12);
+}
+
+.darkMode {
+  --text-primary: rgba(255, 255, 255, 0.87);
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --text-disabled: rgba(255, 255, 255, 0.38);
+  --shadow-color-dark: rgba(0, 0, 0, 0.3);
+
+  @include mat.theme(
         (color: (primary: mat.$azure-palette, theme-type: dark, ),
             typography: Roboto,
             density: -3,
@@ -20,10 +36,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .warn {
     @include mat.theme((color: mat.$red-palette, ));
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 .container {
     width: auto;
     height:100%;  
@@ -47,7 +59,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .app-content {
   flex: 1;
   padding: 15px;
-  background-color: var(--bg-primary);
+  background-color: var(--mat-sys-tartiary);
   min-height: calc(100vh - 64px);
 }
 

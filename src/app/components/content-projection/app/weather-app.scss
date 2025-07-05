@@ -3,7 +3,7 @@
 
 
 .widget-title {
-  @include mat.theme((color: mat.$magenta-palette, ));
+   @include mat.theme((color: mat.$magenta-palette, ));
   font-size: 18px;
   color: var(--mat-sys-primary);
   font-weight: bold;

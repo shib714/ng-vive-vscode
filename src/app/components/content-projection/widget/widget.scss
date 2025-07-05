@@ -1,11 +1,10 @@
 @use '@angular/material' as mat;
 
 .widget {
- 
-   @include mat.sidenav-overrides((container-background-color:var(--mat-sys-outline-variant),
-      container-text-color: var(--mat-sys-on-surface),
-    ));
- 
+  @include mat.sidenav-overrides((container-background-color:var(--mat-sys-outline-variant),
+    container-text-color: var(--mat-sys-on-surface),
+  ));
+   
   @include mat.theme((color: mat.$cyan-palette, ));
   width: 650px;
   background: var(--mat-sys-secondary-container);
@@ -14,10 +13,11 @@
   border-radius: 15px;
   box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
   margin-bottom: 10px;  
-   button {
-        display: block;
-        margin: 14px auto;
-    }
+  
+  button {
+    display: block;
+    margin: 14px auto;
+  }
 }
 
 .widget-header {
@@ -27,8 +27,6 @@
   margin: 0 -10px 15px -10px;
   padding: 15px;
 }
-
-
 
 .widget-content {
   display: grid;
