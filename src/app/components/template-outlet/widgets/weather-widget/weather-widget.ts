@@ -39,6 +39,7 @@ import { NgTemplateOutlet } from "@angular/common";
 })
 export class WeatherWidget {
 
+    // We use @Input() decorator to enable the consumer to provide a template dynamically
    // @Input() headerTemplate!: TemplateRef<any>;
    headerTemplate = input<TemplateRef<any> | undefined>(undefined);
 
