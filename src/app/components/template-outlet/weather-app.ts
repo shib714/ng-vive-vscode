@@ -9,8 +9,8 @@ import { WeatherWidget } from "./widgets/weather-widget/weather-widget";
 
         <weather-widget [headerTemplate]="userAltHeader">
         <ng-template #userAltHeader>
-                <div class="widget-title">Today's Weather</div>
-                <div class="widget-sub-title">Current Weather in Ottawa, ON</div>
+                <div class="alt-header-title">Today's Weather</div>
+                <div class="alt-header-sub-title">Current Weather in Ottawa, ON</div>
             </ng-template>
 
         </weather-widget>
@@ -24,6 +24,15 @@ import { WeatherWidget } from "./widgets/weather-widget/weather-widget";
             align-items: center;
             justify-content: center;
 
+        }
+        .alt-header-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--mat-sys-primary);
+        }
+        .alt-header-sub-title {
+            font-size: 1rem;
+            color: var(--mat-sys-primary);
         }
        
         `
