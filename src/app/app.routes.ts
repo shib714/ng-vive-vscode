@@ -38,4 +38,9 @@ export const routes: Routes = [
             .then(m => m.AppTable), title: 'Content Projection'
     },
 
+    {
+        path: 'app-weather-template-outlet',
+        loadComponent: () => import('./components/template-outlet/weather-app')
+            .then(m => m.WeatherApp), title: 'NgTemplate Outlet Demo'
+    },
 ];

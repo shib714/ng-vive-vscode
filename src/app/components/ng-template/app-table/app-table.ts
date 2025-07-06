@@ -37,8 +37,7 @@ import { MatButtonModule } from '@angular/material/button';
             <button mat-flat-button   (click)="purchaseItem(row.plu)">
             Buy now
           </button>
-        }
-          
+        }          
         </td>
         <td>
           <button mat-flat-button class="warn">Delete</button>
