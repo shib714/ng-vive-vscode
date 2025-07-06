@@ -1,20 +1,25 @@
-import { Component, inject, TemplateRef, ViewChild, ViewContainerRef } from "@angular/core";
+import { Component, inject, input, Input, TemplateRef } from "@angular/core";
 import { WidgetActions } from "../widget-actions.service";
 import { WidgetState } from "../widget-state.service";
 import { MatButtonModule } from "@angular/material/button";
+import { NgTemplateOutlet } from "@angular/common";
 
 
 @Component({
     selector: 'weather-widget',
-    imports: [MatButtonModule],
+    imports: [MatButtonModule, NgTemplateOutlet],
     template: `
     <div class="widget">
         <div class="widget-header">
-            <!-- First attempt to use ng-template; we defined two template variables: defaultHeader & container, 
-             get their reference in the ts file using @ViewChild decorator and use ngAfterViewInit lifecycle hook to set the template to the container-->
-            <div #container></div>
+            <!-- using ngTemplateOutlet directive instead of declarative approach as we did in the previous commit 
+             Note: we didn't use any @ViewChild decorator in the ts file in this approach
+             
+             Advantages are: we can dynamically provide any template we want or ask the consumer to provide one
+             For example, if we use @Input() decorator in the ts file, let's say @Input() headerTemplate!: TemplateRef<any> as below;
+                then we can change the template dynamically in the html file as below-->
+            <ng-container [ngTemplateOutlet]="headerTemplate() || defaultHeader"></ng-container>
             <ng-template #defaultHeader>
-                <div class="widget-title">Weather Widget</div>
+                <div class="widget-title">Weather Forecast</div>
                 <div class="widget-sub-title">Current Weather in Ottawa, ON</div>
             </ng-template>
         </div>
@@ -34,15 +39,9 @@ import { MatButtonModule } from "@angular/material/button";
 })
 export class WeatherWidget {
 
+   // @Input() headerTemplate!: TemplateRef<any>;
+   headerTemplate = input<TemplateRef<any> | undefined>(undefined);
+
     state = inject(WidgetState);
     actions = inject(WidgetActions);
-
-    // we get the references of the template reference variables using @ViewChild decorators as below
-    @ViewChild('container', {read: ViewContainerRef }) container!: ViewContainerRef;
-    @ViewChild('defaultHeader', {read: TemplateRef<any> }) headerTemplate!: TemplateRef<any>;
-
-    // using ngAfterViewInit lifecycle hook, we created a new embedded view of the header template  inside the container
-    ngAfterViewInit() {
-        this.container.createEmbeddedView(this.headerTemplate);
-    }
 }
