@@ -23,14 +23,20 @@ import { NgTemplateOutlet } from "@angular/common";
                 <div class="widget-sub-title">Current Weather in Ottawa, ON</div>
             </ng-template>
         </div>
-        <div class="widget-content">       
-                <div class="content-value">Temperature: {{ state.data.tepterature }}°C</div>
-                <div class="content-value">Sky condition: {{ state.data.skyCondition === 'sunny' ?  '☀️' : '☁️' }}</div>       
+        <div class="widget-content">  
+                <ng-container [ngTemplateOutlet]="contentTemplate() || defaultContent"></ng-container>
+                <ng-template #defaultContent>
+                    <div class="content-value">Temperature: {{ state.data.tepterature }}°C</div>
+                    <div class="content-value">Sky condition: {{ state.data.skyCondition === 'sunny' ?  '☀️' : '☁️' }}</div>       
+                </ng-template>
         </div>
                                 
         <div class="widget-actions">
-                <button mat-flat-button color="primary" (click)="actions.reload()">Reload</button>
-                <button mat-flat-button color="primary" (click)="actions.copyData()">Copy Data</button>
+            <ng-container [ngTemplateOutlet]="actionsTemplate() || defaultActions"></ng-container>
+            <ng-template #defaultActions>
+                    <button mat-flat-button color="primary" (click)="actions.reload()">Reload</button>
+                    <button mat-flat-button color="primary" (click)="actions.copyData()">Copy Data</button>
+            </ng-template>
         </div>
     </div>
     `,
@@ -42,6 +48,8 @@ export class WeatherWidget {
     // We use @Input() decorator to enable the consumer to provide a template dynamically
    // @Input() headerTemplate!: TemplateRef<any>;
    headerTemplate = input<TemplateRef<any> | undefined>(undefined);
+   contentTemplate = input<TemplateRef<any> | undefined>(undefined);
+   actionsTemplate = input<TemplateRef<any> | undefined>(undefined);
 
     state = inject(WidgetState);
     actions = inject(WidgetActions);
