@@ -6,7 +6,14 @@ import { WeatherWidget } from "./widgets/weather-widget/weather-widget";
     template: `
     <div class="weather-container">
         <h2>NG Template Outlet demo: Weather Widget</h2>
-        <weather-widget></weather-widget>
+
+        <weather-widget [headerTemplate]="userAltHeader">
+        <ng-template #userAltHeader>
+                <div class="widget-title">Today's Weather</div>
+                <div class="widget-sub-title">Current Weather in Ottawa, ON</div>
+            </ng-template>
+
+        </weather-widget>
     </div>
     `,
     styles: [
