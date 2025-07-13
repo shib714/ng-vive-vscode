@@ -43,4 +43,9 @@ export const routes: Routes = [
         loadComponent: () => import('./components/template-outlet/weather-app')
             .then(m => m.WeatherApp), title: 'NgTemplate Outlet Demo'
     },
+    {
+        path: 'text-editor',
+            loadComponent: () => import('./components/text-editor/text-editor').then(m => m.TextEditorComponent),
+        title: 'Text Editor'
+}
 ];

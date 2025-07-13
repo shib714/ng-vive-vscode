@@ -1,0 +1,35 @@
+.editor-container {
+  max-width: 765px;//calc(0.62ch * 79 + 2ch);
+  margin: 10px auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;  
+}
+
+.editor-field textarea {
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  font-size: 1rem;
+  min-height: 50px;
+  resize: both;
+  line-height: 1;
+  width:calc(0.62ch * 79 + 2ch);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95em;
+  color: #666;
+
+}
