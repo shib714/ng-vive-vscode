@@ -16,9 +16,7 @@ export class WidgetState {
         skyCondition: 'sunny'
     }
 
-    updateData(data: WeatherData) {
-        this.data = data;
-    }
+
 
     lastUpdatedAt: Date = new Date();
 }

@@ -1,4 +1,4 @@
-import { Component, inject, input, Input, TemplateRef } from "@angular/core";
+import { Component, inject, Injector, input, Input, TemplateRef } from "@angular/core";
 import { WidgetActions } from "../widget-actions.service";
 import { WidgetState } from "../widget-state.service";
 import { MatButtonModule } from "@angular/material/button";
@@ -24,7 +24,8 @@ import { NgTemplateOutlet } from "@angular/common";
             </ng-template>
         </div>
         <div class="widget-content">  
-                <ng-container [ngTemplateOutlet]="contentTemplate() || defaultContent"></ng-container>
+                <ng-container [ngTemplateOutlet]="contentTemplate() || defaultContent" 
+                        [ngTemplateOutletContext]="{ $implicit: state }"></ng-container>
                 <ng-template #defaultContent>
                     <div class="content-value">Temperature: {{ state.data.tepterature }}°C</div>
                     <div class="content-value">Sky condition: {{ state.data.skyCondition === 'sunny' ?  '☀️' : '☁️' }}</div>       
@@ -32,7 +33,9 @@ import { NgTemplateOutlet } from "@angular/common";
         </div>
                                 
         <div class="widget-actions">
-            <ng-container [ngTemplateOutlet]="actionsTemplate() || defaultActions"></ng-container>
+            <ng-container 
+                        [ngTemplateOutlet]="actionsTemplate() || defaultActions" 
+                        [ngTemplateOutletInjector]="injector"></ng-container>
             <ng-template #defaultActions>
                     <button mat-flat-button color="primary" (click)="actions.reload()">Reload</button>
                     <button mat-flat-button color="primary" (click)="actions.copyData()">Copy Data</button>
@@ -53,4 +56,5 @@ export class WeatherWidget {
 
     state = inject(WidgetState);
     actions = inject(WidgetActions);
+    injector = inject(Injector);
 }

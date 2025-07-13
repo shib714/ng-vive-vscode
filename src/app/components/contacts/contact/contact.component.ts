@@ -28,4 +28,6 @@ import { Contact } from '../models/contact.model';
 export class ContactComponent {
   contact = input.required<Contact>();
   onDelete = output<Contact>();
+
+ 
 } 
