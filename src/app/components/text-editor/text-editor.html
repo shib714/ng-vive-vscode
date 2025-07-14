@@ -4,17 +4,32 @@
     <button mat-icon-button (click)="format('italic')" aria-label="Italic"><mat-icon>format_italic</mat-icon></button>
     <button mat-icon-button (click)="format('underline')" aria-label="Underline"><mat-icon>format_underlined</mat-icon></button>
     <button mat-icon-button (click)="format('strikeThrough')" aria-label="Strike"><mat-icon>strikethrough_s</mat-icon></button>
+    <div class="toolbar-separator"></div>
+
+    <button mat-icon-button 
+            (click)="manualWrapLines()" 
+            aria-label="Wrap Long Lines"
+            matTooltip="Wrap Long Lines">
+      <mat-icon>format_align_left</mat-icon>
+    </button>
+    <button mat-icon-button 
+            (click)="insertLineBreak()" 
+            aria-label="Insert Line Break"
+            matTooltip="Insert Line Break">
+      <mat-icon>keyboard_return</mat-icon>
+    </button>
   </div>
     <div class="editor-content" #editorContent
     contenteditable="true"
     (input)="onContentInput($event)"
     (keydown)="onKeyDown($event)"
-    (click)="updateCursorPosition($event)"
+    (click)="onEditorClick($event)"
     [attr.spellcheck]="false"
   ></div>
 
   <div class="footer">
     <span>Line: {{ cursorLine() }}, Col: {{ cursorCol() }}</span>
     <span [class.warning]="charsRemaining() <= 10">{{ charsRemaining() }} chars remaining</span>
+
   </div>
 </div>
