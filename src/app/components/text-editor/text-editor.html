@@ -19,13 +19,14 @@
       <mat-icon>keyboard_return</mat-icon>
     </button>
   </div>
-    <div class="editor-content" #editorContent
-    contenteditable="true"
-    (input)="onContentInput($event)"
-    (keydown)="onKeyDown($event)"
-    (click)="onEditorClick($event)"
-    [attr.spellcheck]="false"
-  ></div>
+    <div class="editor-content"
+  contenteditable="true"
+  (input)="onContentInput()"
+  (keydown)="onKeyDown($event)"
+  (click)="onEditorClick()"
+  [attr.spellcheck]="false"
+  #editorContentDiv
+></div>
 
   <div class="footer">
     <span>Line: {{ cursorLine() }}, Col: {{ cursorCol() }}</span>
