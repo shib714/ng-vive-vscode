@@ -1,35 +1,52 @@
 .editor-container {
-  max-width: 765px;//calc(0.62ch * 79 + 2ch);
-  margin: 10px auto;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  padding: 2px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  margin: 24px auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: calc(79ch + 48px);
+  max-width: 95vw;
 }
 
 .toolbar {
   display: flex;
-  gap: 8px;  
+  gap: 8px;
+  padding: 8px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  background: #f5f5f5;
 }
 
-.editor-field textarea {
-  font-family: 'Fira Mono', 'Consolas', monospace;
-  font-size: 1rem;
-  min-height: 50px;
-  resize: both;
-  line-height: 1;
-  width:calc(0.62ch * 79 + 2ch);
-  max-width: 100%;
-  box-sizing: border-box;
+.editor-content {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 200px;
+  max-height: 600px;
+  padding: 16px;
+  margin: 0;
+  width: 79ch;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  outline: none;
+  border: none;
+  overflow-y: auto;
+  background: #fff;
 }
 
 .footer {
   display: flex;
   justify-content: space-between;
-  font-size: 0.95em;
-  color: #666;
+  align-items: center;
+  padding: 8px 16px;
+  background: #f5f5f5;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: 0.85rem;
+  height: 32px;
+}
 
+.warning {
+  color: #f44336;
+  font-weight: 500;
 }

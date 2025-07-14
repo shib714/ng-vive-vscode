@@ -1,23 +1,20 @@
-<div class="editor-container">
+<div class="editor-container mat-elevation-z2">
   <div class="toolbar">
-    <button mat-icon-button (click)="format('bold')" aria-label="Bold"><mat-icon>format_bold</mat-icon></button>
+    <button mat-icon-button (click)="format('bold')" aria-label="Bold"  matTooltip="Bold (Ctrl+B)"><mat-icon>format_bold</mat-icon></button>
     <button mat-icon-button (click)="format('italic')" aria-label="Italic"><mat-icon>format_italic</mat-icon></button>
     <button mat-icon-button (click)="format('underline')" aria-label="Underline"><mat-icon>format_underlined</mat-icon></button>
     <button mat-icon-button (click)="format('strikeThrough')" aria-label="Strike"><mat-icon>strikethrough_s</mat-icon></button>
   </div>
-  <mat-form-field class="editor-field" appearance="outline">
-    <textarea matInput
-      [value]="text()"
-      (input)="onInput($event)"
-      (select)="onSelect($event)"
-      (click)="onClick($event)"
-      rows="10"
-      cdkTextareaAutosize
-      style="white-space: pre-wrap; word-break: break-all; font-family: monospace; width: 100%;"
-    ></textarea>
-  </mat-form-field>
+    <div class="editor-content" #editorContent
+    contenteditable="true"
+    (input)="onContentInput($event)"
+    (keydown)="onKeyDown($event)"
+    (click)="updateCursorPosition($event)"
+    [attr.spellcheck]="false"
+  ></div>
+
   <div class="footer">
     <span>Line: {{ cursorLine() }}, Col: {{ cursorCol() }}</span>
-    <span>{{ charsRemaining() }} chars remaining</span>
+    <span [class.warning]="charsRemaining() <= 10">{{ charsRemaining() }} chars remaining</span>
   </div>
 </div>
