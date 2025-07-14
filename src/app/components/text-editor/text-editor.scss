@@ -1,11 +1,12 @@
 .editor-container {
   display: flex;
   flex-direction: column;
-  margin: 24px auto;
+  margin: 12px auto;
   background: #fff;
+  border: 1px solid #03441c;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: calc(79ch + 48px);
+  width: calc(79ch + 24px);
   max-width: 95vw;
 }
 
@@ -34,7 +35,7 @@
   font-family: 'Consolas', 'Courier New', monospace;
   font-size: 14px;
   line-height: 1.5;
-  min-height: 200px;
+  min-height: 150px;
   max-height: 600px;
   padding: 16px;
   margin: 0;
