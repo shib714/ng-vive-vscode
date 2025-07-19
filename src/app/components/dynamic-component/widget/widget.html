@@ -1,0 +1,31 @@
+<div class="widget">
+    <div class="widget-header">
+        <div class="widget-title">Weather Condition</div>
+        <div class="widget-subtitle">Current condition in Ottawa, Ontario</div>
+        <label class="toggle">
+            <input type="checkbox" [checked]="collapsed()" (change)="toggleCompactMode()" />
+            Compact Mode
+        </label>
+    </div>
+    <div class="widget-body">
+        <div class="widget-action">
+            <button mat-flat-button (click)="toggleCompactMode()">
+                {{collapsed() ? 'Show More' : 'Show Less'}}
+            </button>
+        </div>
+        @if (!collapsed()) {             
+            <div class="widget-content" >
+            <div>Full weather condition details, extended forecast, etc.</div>
+            <div class="sky-condition">Sky Condition: ☀️</div>
+            <div class="temperature">Temperature: {{temperature}}°C</div>
+            <div class="temperature">Last Updated At: {{lastUpdateAt | date: 'medium'}}</div>
+        </div>
+        } @else {
+            <div class="widget-content">
+                <div class="sky-condition">Sky Condition: ☀️</div>
+                <div class="temperature">Temperature: {{temperature}}°C</div>
+            </div>
+        }
+
+    </div>
+</div>

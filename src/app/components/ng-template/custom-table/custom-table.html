@@ -4,6 +4,7 @@
             <ng-container *ngTemplateOutlet="
               headers || defaultHeaderTemplate;
               context: { $implicit: data }
+              
             "></ng-container>
         </tr>
     </thead>
@@ -22,7 +23,16 @@
 <!-- If no template is provided use keys as headers and display all values -->
 <ng-template #defaultHeaderTemplate let-data>
     @for (header of data[0] | keyvalue; track header.key) {
-    <th>{{ header.key }}</th>}
+
+    <th  style="cursor:pointer">
+      {{ header.key }}
+      @if (sortKey === header.key) {
+        <span>
+          {{ sortDirection === 'asc' ? '▲' : '▼' }}
+        </span>
+      }
+    </th>
+    }
 </ng-template>
 
 <ng-template #defaultRowTemplate let-row>

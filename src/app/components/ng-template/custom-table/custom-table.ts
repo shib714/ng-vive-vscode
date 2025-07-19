@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, ContentChild, Directive, Input, TemplateRef } from "@angular/core";
+import { Component, ContentChild, Directive, Input, signal, TemplateRef } from "@angular/core";
 
 
 interface TableHeaderTemplateContext<TItem extends object> {
@@ -55,4 +55,33 @@ export class CustomTable <TItem extends object> {
   @ContentChild(TableHeaderTemplateDirective, {read: TemplateRef}) headers?: TemplateRef<any>;
   @ContentChild(TableRowTemplateDirective, {read: TemplateRef}) rows?: TemplateRef<any>;
     
+
+sortKey = signal<string | number | null>(null);
+sortDirection: 'asc' | 'desc' = 'asc';
+
+
+get sortedData(): TItem[] {
+  if (!this.sortKey) return this.data;
+  return [...this.data].sort((a, b) => {
+    const aValue = (a as any)[this.sortKey()!];
+    const bValue = (b as any)[this.sortKey()!];
+    if (aValue == null) return 1;
+    if (bValue == null) return -1;
+    if (aValue === bValue) return 0;
+    if (this.sortDirection === 'asc') {
+      return aValue > bValue ? 1 : -1;
+    } else {
+      return aValue < bValue ? 1 : -1;
+    }
+  });
+}
+
+onSort(key: string | number | null) {
+  if (this.sortKey() === key) {
+    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+  } else {
+    this.sortKey.set(key) ;
+    this.sortDirection = 'asc';
+  }
+}
 }

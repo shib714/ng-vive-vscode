@@ -47,5 +47,6 @@ export const routes: Routes = [
         path: 'text-editor',
             loadComponent: () => import('./components/text-editor/text-editor').then(m => m.TextEditorComponent),
         title: 'Text Editor'
-}
+    },
+     { path: 'dynamic-component', loadComponent: () => import('./components/dynamic-component/dynamic-component').then((m) => m.DynamicComponent), title: 'Dynamic component' }, 
 ];

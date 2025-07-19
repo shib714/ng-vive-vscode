@@ -1,30 +1,43 @@
   @use '@angular/material' as mat;
- ::ng-deep table {
-     @include mat.theme((color: mat.$cyan-palette, ));
-     width: 100%;
-     margin: 2rem 0;
-     padding: 10px;
-     border: #083eb4 1px solid;
-     border-collapse: collapse; 
-     box-shadow: 0 0 20px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
 
-     thead {
-         tr {
-             background-color: var(--mat-sys-outline-variant);
-             
-             color: #ffffff;
-             text-align: left;
-         }
-     }
+  ::ng-deep table {
+      @include mat.theme((color: mat.$azure-palette, ));
+      width: 100%;
+      margin: 1rem 0;
+      padding: 5px;
+      border: #1055eb 1px solid;
+      border-collapse: collapse;
+      box-shadow: 0 0 2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
 
-     tbody tr:hover {
-         background-color: #f6f6f6;
-     }
+      thead {
+          tr {
+              background-color: var(--mat-sys-outline-variant);
+              color: #4b4a4a;
+              text-align: left;
+              height: 1px;
+          }
+      }
 
-     th,
-     td {
-        border: var(--mat-sys-outline-variant) 1px solid;
-         padding: 1rem;
-     }
- }
+      tbody tr:hover {
+          background-color: #c4cbd1;
+      }
 
+      th,
+      td {
+          border: var(--mat-sys-outline-variant) 1px solid;
+          padding: 1rem;
+      }
+
+      .th {
+          position: relative;
+          z-index: 2;
+          cursor: pointer;
+      }
+
+      .sort-icon {
+          display: inline-block;
+          margin-left: 5px;
+          font-size: 0.9rem;
+          color: var(--mat-sys-on-surface, #333);
+      }
+  }
