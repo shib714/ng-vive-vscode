@@ -63,6 +63,9 @@ export class DynamicComponent {
                     this.#componentRef?.destroy();
                     this.#componentRef = undefined; //to let garbage collector to remove this ref.
                 })
+            ],
+            directives: [
+                HoverEffectDirective
             ]
         }); 
 
