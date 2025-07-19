@@ -51,9 +51,14 @@ export class DynamicComponent {
                 inputBinding('title', () => 'Weather Condition'),
                 inputBinding('description', () => "Today's weather conditions in Ottawa."),
                 inputBinding('collapsed', this.compactMode),
-                outputBinding<boolean>('collapsedChange' , (isCollapsed) => {
-                    this.compactMode.set(isCollapsed);            
-                }),
+
+                //2nd refactoring
+                // outputBinding<boolean>('collapsedChange' , (isCollapsed) => {
+                //     this.compactMode.set(isCollapsed);            
+                // }),
+
+                //3rd refactoring : twoWayBinding
+                twoWayBinding('collapsed' , this.compactMode),
                 outputBinding('closed', () => {
                     this.#componentRef?.destroy();
                     this.#componentRef = undefined; //to let garbage collector to remove this ref.
