@@ -1,5 +1,5 @@
 import { style } from "@angular/animations";
-import { Component, ComponentRef, inputBinding, outputBinding, signal, twoWayBinding, viewChild, ViewContainerRef } from "@angular/core";
+import { Component, ComponentRef, effect, inputBinding, outputBinding, signal, twoWayBinding, viewChild, ViewContainerRef } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatTooltip } from "@angular/material/tooltip";
 import { HoverEffectDirective } from "./hover-effect.directive";
@@ -19,6 +19,10 @@ export class DynamicComponent {
     #componentRef?: ComponentRef<Widget>;
 
     constructor() {
+        effect(() => {
+            const isCompactMode = this.compactMode();
+            this.#componentRef?.setInput('collapsed', isCompactMode)
+        })
     }
 
     createComponent() {
