@@ -12,20 +12,22 @@ import { interval } from "rxjs";
   styleUrls: ['./widget.scss']
 })
 export class Widget {
-    title= input.required<string>();
-    description= input.required<string>();
+  title = input.required<string>();
+  description = input.required<string>();
 
-    /**
-   * collapsed = model(false) is equivalent to 
-   * collapsed = input()
-   * collapsedChange = output<>();
-   * 
-   */
-  collapsed = model(false);
+   collapsed = model(false);
 
+ /**
+ * collapsed = model(false) is equivalent to 
+ * collapsed = input()
+ * collapsedChange = output<>();
+ * 
+ * this.collapsed.set(newValue);
+ * this.collapsedChange.emit(newValue);
+ * */
   closed = output<void>();
 
-lastUpdateAt: Date = new Date();
+  lastUpdateAt: Date = new Date();
 
   protected temperature = 21;
 
@@ -41,14 +43,15 @@ lastUpdateAt: Date = new Date();
     console.log('Weather Content Is Destroyed...');
   }
 
-  toggleContent() {
-    this.collapsed.set(this.collapsed());
-    this.closed.emit();
-  }
+  // toggleContent() {
+  //   this.collapsed.set(this.collapsed());
+  //   this.closed.emit();
+  //   console.log('toggledContent:', this.collapsed());
+  // }
   toggleCompactMode() {
     this.collapsed.set(!this.collapsed());
     console.log('Compact mode toggled:', this.collapsed());
-   
+
   }
 
 }

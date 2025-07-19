@@ -1,0 +1,10 @@
+<main id="content">
+    <h1>Creating Dynamic Component with Angular 20 features</h1>
+
+    <section class="toolbar ">
+        <p>Click the button to create the weather component dynamically.</p>
+        <button mat-flat-button (click)="createComponent()">Create Component</button>
+    </section>
+    <!-- Place holder where Widget component will be projected -->
+    <ng-container #container></ng-container>
+</main>
