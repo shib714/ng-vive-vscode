@@ -29,7 +29,7 @@ export class DynamicComponent {
         this.vcr()?.clear();  
         //whenever user clicks the  'Create Component' button, we dynamically create the Widget component 
         
-        //REFACTORING Start
+        //REFACTORING Start 1
         
         //Few disadvantages of this code:
         //a. This code isn't reactive; it is imperative and it would be nice to have something more declerative and reactive
@@ -50,7 +50,14 @@ export class DynamicComponent {
             bindings: [
                 inputBinding('title', () => 'Weather Condition'),
                 inputBinding('description', () => "Today's weather conditions in Ottawa."),
-                inputBinding('collapsed', this.compactMode)
+                inputBinding('collapsed', this.compactMode),
+                outputBinding<boolean>('collapsedChange' , (isCollapsed) => {
+                    this.compactMode.set(isCollapsed);            
+                }),
+                outputBinding('closed', () => {
+                    this.#componentRef?.destroy();
+                    this.#componentRef = undefined; //to let garbage collector to remove this ref.
+                })
             ]
         }); 
 
@@ -62,16 +69,21 @@ export class DynamicComponent {
         //this.#componentRef?.setInput('collapsed', this.compactMode());
 
         //and subscribe to the closed outputes
-        this.#componentRef?.instance.collapsed
-            .subscribe((isCollapsed) => {
-                this.compactMode.set(isCollapsed);            
-         });
+
+        //REFACTORING Start 2
+        // we can also use output binding to migrate
+        //  the 1st argument of this function,  we define the output name and 
+        // provide a callback that executes the logic  as the 2nd argument as we did in line 54
+        // this.#componentRef?.instance.collapsed
+        //     .subscribe((isCollapsed) => {
+        //         this.compactMode.set(isCollapsed);            
+        //  });
 
          //once it emits, we destroy the component
-        this.#componentRef?.instance.closed.subscribe(
-        () => { this.#componentRef?.destroy();
-            this.#componentRef = undefined;
-        });   
+        // this.#componentRef?.instance.closed.subscribe(
+        // () => { this.#componentRef?.destroy();
+        //     this.#componentRef = undefined;
+        // });   
         console.log('Widget Component Created...');   
 
 
