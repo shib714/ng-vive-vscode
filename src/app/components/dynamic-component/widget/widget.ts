@@ -18,12 +18,16 @@ export class Widget {
    collapsed = model(false);
 
  /**
- * collapsed = model(false) is equivalent to 
+ * above collapsed = model(false) is equivalent to :
+ * 
  * collapsed = input()
  * collapsedChange = output<>();
  * 
  * this.collapsed.set(newValue);
  * this.collapsedChange.emit(newValue);
+ * 
+ * In template : 
+ * <widget [collapsed]="prop2sync" (collapsedChange) = this.prop2sync.set($event)>
  * */
   closed = output<void>();
 

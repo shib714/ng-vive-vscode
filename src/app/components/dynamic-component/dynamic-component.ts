@@ -38,7 +38,6 @@ export class DynamicComponent {
          });
 
          //once it emits, we destroy the component
-
         this.#componentRef?.instance.closed.subscribe(
         () => { this.#componentRef?.destroy();
             this.#componentRef = undefined;
