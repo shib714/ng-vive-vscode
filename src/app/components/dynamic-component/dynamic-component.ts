@@ -65,7 +65,14 @@ export class DynamicComponent {
                 })
             ],
             directives: [
-                HoverEffectDirective
+                HoverEffectDirective,
+                {
+                    type: MatTooltip,
+                    bindings: [
+                        inputBinding('matToolTip', () => 'Subscribe later..'),
+                        inputBinding('matTooltipPosition', () => 'above')
+                    ]
+                }
             ]
         }); 
 
