@@ -1,35 +1,36 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { CustomTable } from '../custom-table/custom-table';
+import { CustomTable, TableHeaderTemplateDirective, TableRowTemplateDirective } from '../custom-table/custom-table';
 import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
+  standalone: true,
   selector: 'app-table',
-  imports: [CommonModule, CustomTable, MatButtonModule],
+  imports: [CommonModule, CustomTable, MatButtonModule, TableHeaderTemplateDirective, TableRowTemplateDirective],
   template: `
   <div class="app-content">
     <h2>Usage of ng-template demo</h2>
     <!-- No templates provided, will use default layout -->
-    <custom-table [data]="employees"></custom-table>
+     <custom-table [data]="inventory"></custom-table> 
 
     <!-- Basic configured template -->
-    <custom-table [data]="employees">
-      <ng-template #headers>
+     <custom-table [data]="employees">
+      <ng-container *tableHeader>
         <th>First</th>
         <th>Last</th>
-      </ng-template>
-    </custom-table>
+      </ng-container>
+    </custom-table> 
 
     <!-- Highly configured template with conditional elements -->
     <custom-table [data]="inventory">
-      <ng-template #headers>
+      <ng-container *tableHeader>
         <th>Item</th>
         <th>Price</th>
-        <th></th>
-        <th></th>
-      </ng-template>
-      <ng-template #rows let-row>
+        <th>Buy</th>
+        <th>Delete</th>
+      </ng-container>
+      <ng-container *tableRow="inventory; let row">
         <td>{{ row.name }}</td>
         <td>{{ row.price | currency: row.currency }}</td>
         <td>
@@ -42,7 +43,7 @@ import { MatButtonModule } from '@angular/material/button';
         <td>
           <button mat-flat-button class="warn">Delete</button>
         </td>
-      </ng-template>
+      </ng-container>
     </custom-table>
   </div>
   `,
@@ -52,14 +53,14 @@ import { MatButtonModule } from '@angular/material/button';
 
 export class AppTable {
   employees = [
-    { firstName: 'Employee', lastName: 'One' },
-    { firstName: 'Employee', lastName: 'Two' },
-    { firstName: 'Employee', lastName: 'Three' },
-    { firstName: 'Employee', lastName: 'Four' },
-    { firstName: 'Employee', lastName: 'Five' },
+    { firstName: 'John', lastName: 'Sutter' },
+    { firstName: 'Emaily', lastName: 'Chao' },
+    { firstName: 'Steven', lastName: 'Simon' },
+    { firstName: 'Jessica', lastName: 'Thompson' },
+    { firstName: 'Erica', lastName: 'Dorvolt' },
   ];
 
-  inventory = [
+  inventory:Inventory[] = [
     {
       plu: 110,
       supplier: 'X Corp',
@@ -89,4 +90,18 @@ export class AppTable {
   purchaseItem(plu: number) {
     console.log('handle purchase for', plu);
   }
+}
+
+export interface Employee {
+  firstName: string;
+  lastName: string;
+}
+
+export interface Inventory {
+  plu: number;
+  supplier: string;
+  name: string;
+  inStock: number;
+  price : number;
+  currency: string;
 }
