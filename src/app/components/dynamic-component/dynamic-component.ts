@@ -46,7 +46,14 @@ export class DynamicComponent {
         () => { this.#componentRef?.destroy();
             this.#componentRef = undefined;
         });   
-        console.log('Widget Component Created...');
+        console.log('Widget Component Created...');   
+
+        //Few disadvantages of this code:
+        //a. This code isn't reactive; it is imperative and it would be nice to have something more declerative and reactive
+        //b. Handling of two-way data binding is very cumbersome
+        //c. There is no unified style to work with dynamic component inputs and outputs
+        //d. The current output API requires us to access the class output property 
+        //   directly which doesn't respect their output aliasing and it is different from how it works in component templates.
 
     }
     
