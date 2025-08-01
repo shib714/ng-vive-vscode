@@ -1,0 +1,31 @@
+<div class="widget">
+
+    <div class="widget-header">
+        <div class="buttons">
+            <img src="assets/weather.png" alt="Weather Icon" />
+            <button data-testId="close-btn" mat-flat-button (click)="closed.emit()">Close Widget</button>
+        </div>
+        <div data-testId="title" class="widget-title">{{ title() }}</div>
+        <div data-testId="description" class="widget-sub-title">{{ description() }}</div>
+        <div class="widget-toggle"><button data-testId="collapse-btn" mat-flat-button class="hide-toggle"
+                (click)="collapsed.set(!collapsed())">
+                {{ btnText() }}</button></div>
+
+
+
+    </div>
+    <div class="widget-body">
+        @if (!collapsed()) {
+
+        <div class="widget-content">
+            <div>Full weather condition details, extended forecast, etc.</div>
+            <div class="sky-condition">Sky Condition: ☀️</div>
+            <div class="temperature">Temperature: {{temperature}}°C</div>
+            <div class="temperature">Last Updated At: {{lastUpdateAt | date: 'medium'}}</div>
+        </div>
+        }
+        <div class="widget-actions">
+            <p class="last-update">Last Updated: <b>Today</b></p>
+        </div>
+    </div>
+</div>

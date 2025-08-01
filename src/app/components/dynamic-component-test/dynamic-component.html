@@ -1,0 +1,13 @@
+<main id="content">
+    <h1>Dynamic Component in Angular 20.1.4 with unit test</h1>
+        <label class="toggle">
+            <input type="checkbox"  [checked]="compactMode()" (change)="toggleCompactMode()" />
+            Compact Mode
+        </label>
+    <section class="toolbar ">
+        <p>Click to create the component dynamically.</p>
+        <button mat-flat-button (click)="createComponent()">Create Component</button>
+    </section>
+    <!-- Place holder where Widget component will be projected -->
+    <ng-container #container ></ng-container>
+</main>
