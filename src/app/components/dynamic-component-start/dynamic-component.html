@@ -4,6 +4,7 @@
         <input type="checkbox" [checked]="compactMode()" (change)="toggleCompactMode()" />
         Compact Mode
     </label>
+    <ng-container #dynamicContainer></ng-container>
     <section class="toolbar">
         <button mat-flat-button (click)="createComponent()" class="create">Create Component</button>
         <button mat-flat-button (click)="destroyComponent()" class="accent destroy">Destroy Component</button>

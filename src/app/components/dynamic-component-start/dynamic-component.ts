@@ -18,16 +18,17 @@ import { Widget } from './widget/widget';
 export class DynamicComponent {
 
   compactMode = signal(false);
-  private viewContainerRef = inject(ViewContainerRef);
+  //private viewContainerRef = inject(ViewContainerRef);
+  private viewContainerRef = viewChild('dynamicContainer',{ read: ViewContainerRef});
 
   createComponent() {
-    this.viewContainerRef.clear();
+    this.viewContainerRef()?.clear();
     console.log('Creating component');
-    this.viewContainerRef.createComponent<Widget>(Widget);
+    this.viewContainerRef()?.createComponent<Widget>(Widget);
   }
   destroyComponent() {
     console.log('Destroying component');
-    this.viewContainerRef.clear();
+    this.viewContainerRef()?.clear();
   }
 
   toggleCompactMode() {
