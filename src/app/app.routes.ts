@@ -48,14 +48,19 @@ export const routes: Routes = [
         loadComponent: () => import('./components/text-editor/text-editor').then(m => m.TextEditorComponent),
         title: 'Text Editor'
     },
-    { 
-        path: 'dynamic-component', 
-        loadComponent: () => import('./components/dynamic-component/dynamic-component').then((m) => m.DynamicComponent), 
-        title: 'Dynamic component' 
+    {
+        path: 'dc-widget',
+        loadComponent: () => import('./components/dynamic-component-start/widget/widget').then((m) => m.Widget),
+        title: 'Dynamic component part-1'
     },
-    { 
-        path: 'dyna-component', 
-        loadComponent: () => import('./components/dynamic-component-test/dynamic-component').then((m) => m.DynamicComponent), 
-        title: 'Dynamic Widget component' 
+    {
+        path: 'dynamic-component',
+        loadComponent: () => import('./components/dynamic-component/dynamic-component').then((m) => m.DynamicComponent),
+        title: 'Dynamic component (advanced)'
+    },
+    {
+        path: 'dyna-component',
+        loadComponent: () => import('./components/dynamic-component-test/dynamic-component').then((m) => m.DynamicComponent),
+        title: 'Dynamic component (unit tests)'
     },
 ];
