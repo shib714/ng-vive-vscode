@@ -17,15 +17,19 @@ import { Widget } from './widget/widget';
 //all using modern signal based API
 export class DynamicComponent {
 
-   compactMode = signal(false);
+  compactMode = signal(false);
+  private viewContainerRef = inject(ViewContainerRef);
 
   createComponent() {
-
+    this.viewContainerRef.clear();
+    console.log('Creating component');
+    this.viewContainerRef.createComponent<Widget>(Widget);
   }
   destroyComponent() {
-
+    console.log('Destroying component');
+    this.viewContainerRef.clear();
   }
-  
+
   toggleCompactMode() {
     this.compactMode.set(!this.compactMode());
     console.log('Compact mode toggled:', this.compactMode());
