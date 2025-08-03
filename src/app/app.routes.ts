@@ -49,8 +49,8 @@ export const routes: Routes = [
         title: 'Text Editor'
     },
     {
-        path: 'dc-widget',
-        loadComponent: () => import('./components/dynamic-component-start/widget/widget').then((m) => m.Widget),
+        path: 'dynamic-component-part-1',
+        loadComponent: () => import('./components/dynamic-component-start/dynamic-component').then((m) => m.DynamicComponent),
         title: 'Dynamic component part-1'
     },
     {
