@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { WeatherContent } from './weather-content';
 
 @Component({
-  selector: 'dc-widget',
-  imports: [CommonModule, MatButtonModule, WeatherContent],
+  selector: 'widget',
+  imports: [CommonModule, MatButtonModule],
   templateUrl: './widget.html',
   styleUrl: './widget.scss'
 })
@@ -14,11 +14,5 @@ export class Widget {
   title = input<string>("_Widget Title_");
   description = input<string>("_Widget Description_");
   closed = output<void>();
-  collapsed = model(false);
 
-  toggleCompactMode() {
-    this.collapsed.set(!this.collapsed());
-    console.log('Compact mode toggled:', this.collapsed());
-
-  }
 }

@@ -63,4 +63,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .toolbar-title {
     font-size: 1.2rem;
   }
+
+}
+.flex-row {
+    display: flex;
+    flex-direction: row ;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }

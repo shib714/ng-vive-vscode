@@ -7,12 +7,10 @@
     padding: 10px;
     border-radius: 15px;
     box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
-    margin-bottom: 10px;        
+    margin: 15px;        
 }
 
- .widget-header {
-  display: grid;
-  position: relative;  
+ .widget-header {  
   border-bottom: #0e6321 2px solid;
   margin: 0 -10px 0 -10px;
   padding: 15px;
@@ -23,18 +21,10 @@
   color: var(--mat-sys-primary);
   font-weight: bold;
 }
-.toggle {
-  position: absolute;
-  //top: 12px;
-  right: 15px;
-  background-color: #0e6321;
-  color: #fff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: pointer;
+.widget-subtitle {
+  font-size: 14px;  
+  margin-top: 5px;
 }
-
 .widget-body {
   display: grid;
   background: var(--mat-sys-primary);
@@ -42,21 +32,9 @@
   margin:auto;
   padding: 16px;
   border: 1px solid #ccc;
-  border-top: none;
+  border-top: 10px solid #ccc;
   border-radius: 0 0 8px 8px;
 }
 
-.widget-content {
-  margin-bottom: 12px;
-  transition: max-height 0.3s ease;
-  overflow: hidden;
-}
 
-.widget-action {
-  text-align: right;
-}
-.flex-row {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-}
+

@@ -1,12 +1,12 @@
 <main id="content">
-    <h1 class="page-title">Dynamic Components</h1>
-    <label class="toggle">
-        <input type="checkbox" [checked]="compactMode()" (change)="toggleCompactMode()" />
-        Compact Mode
-    </label>
+    <h1>Dynamic Components</h1>
+    <ng-template #weatherContent>
+        <weather-content />
+    </ng-template>
+
     <ng-container #dynamicContainer></ng-container>
-    <section class="toolbar">
-        <button mat-flat-button (click)="createComponent()" class="create">Create Component</button>
-        <button mat-flat-button (click)="destroyComponent()" class="accent destroy">Destroy Component</button>
+    <section class="flex-row">
+        <button mat-flat-button (click)="createComponent()">Create Component</button>
+        <button mat-flat-button (click)="destroyComponent()" class="warn">Destroy Component</button>
     </section>
 </main>

@@ -1,29 +1,13 @@
 <div class="widget">
+    <div class="flex-row">
+        <img class="widget-icon" src="assets/weather.png" alt="Weather Icon" />
+        <button mat-flat-button class="accent action" (click)="closed.emit()">close</button>
+    </div>
     <div class="widget-header">
-        <div class="flex-row">
-            <img src="assets/weather.png" alt="Weather Icon" />
-            <button data-testId="close-btn" mat-flat-button (click)="closed.emit()">Close Widget</button>
-        </div>
         <div class="widget-title">{{title()}}</div>
         <div class="widget-subtitle">{{description()}}</div>
-       
     </div>
     <div class="widget-body">
-        <div class="widget-action">
-            <button mat-flat-button class="accent" (click)="toggleCompactMode()">
-                {{collapsed() ? 'More Info' : 'Less Info'}}
-            </button>
-        </div>
-        @if (!collapsed()) {
-        <div class="widget-content">
-            <weather-content></weather-content>    
-        </div>
-        } @else {
-        <div class="widget-content">
-            <ng-content>
-                <p class="default-content">No additional content provided.</p>
-            </ng-content>
-        </div>
-        }
+        <ng-content><p class="no-content">No content...</p></ng-content>        
     </div>
 </div>

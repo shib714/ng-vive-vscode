@@ -1,11 +1,12 @@
-import { Component, ComponentRef, inject, signal, TemplateRef, viewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentRef, signal, TemplateRef, viewChild, ViewContainerRef } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Widget } from './widget/widget';
+import { WeatherContent } from './widget/weather-content';
 
 
 @Component({
   selector: 'dynamic-component-part-1',
-  imports: [MatButtonModule],
+  imports: [MatButtonModule, WeatherContent],
   templateUrl: './dynamic-component.html',
   styleUrl: './dynamic-component.scss'
 })
@@ -17,23 +18,37 @@ import { Widget } from './widget/widget';
 //all using modern signal based API
 export class DynamicComponent {
 
-  compactMode = signal(false);
   //private viewContainerRef = inject(ViewContainerRef);
-  private viewContainerRef = viewChild('dynamicContainer',{ read: ViewContainerRef});
+  vcr = viewChild('dynamicContainer', { read: ViewContainerRef });
+
+  //to set the title, description, and other metadata for the component
+  #componentRef?: ComponentRef<Widget>;
+  weatherContent = viewChild<TemplateRef<unknown>>('weatherContent');
 
   createComponent() {
-    this.viewContainerRef()?.clear();
+    this.vcr()?.clear();// Clear any existing component before creating a new one
     console.log('Creating component');
-    this.viewContainerRef()?.createComponent<Widget>(Widget);
+    const content = this.vcr()?.createEmbeddedView(this.weatherContent()!);
+
+    this.#componentRef = this.vcr()?.createComponent(Widget, {
+      projectableNodes: [
+        content?.rootNodes!
+      ]
+    });
+    //handle the inputs for the dynamically created component
+    this.#componentRef?.setInput('title', 'Weather Condition');
+    this.#componentRef?.setInput('description', 'Currently in Ottawa, Ontario.');
+
+    //handle the output event from the dynamically created component
+    this.#componentRef?.instance.closed.subscribe(() => {
+      console.log('Component closed');
+      this.#componentRef?.destroy(); // Destroy the component when the closed event is emitted
+    })
+
   }
   destroyComponent() {
     console.log('Destroying component');
-    this.viewContainerRef()?.clear();
-  }
-
-  toggleCompactMode() {
-    this.compactMode.set(!this.compactMode());
-    console.log('Compact mode toggled:', this.compactMode());
+    this.vcr()?.clear();
   }
 
 }

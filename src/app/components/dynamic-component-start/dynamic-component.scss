@@ -3,14 +3,6 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: 60vh;
     background-color: aquamarine;
-}
-
-.toolbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
 }

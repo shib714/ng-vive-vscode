@@ -9,9 +9,9 @@ import { interval } from "rxjs";
   imports   : [CommonModule],
   template: `
     <div>Full weather condition details, extended forecast, etc.</div>
-    <div class="sky-condition">Sky Condition: ☀️</div>  
-    <div class="temperature">Temperature: {{temperature}}°C</div>
-    <div class="temperature">Last Updated At: {{lastUpdateAt | date: 'medium'}}</div>
+    <div>Sky Condition: ☀️</div>  
+    <div>Temperature: {{temperature}}°C</div>
+    <div>Last Updated At: {{lastUpdateAt | date: 'medium'}}</div>
   `,
 })
 export class WeatherContent {
