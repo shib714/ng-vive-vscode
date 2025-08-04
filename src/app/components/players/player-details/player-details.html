@@ -1,0 +1,38 @@
+<section>
+    <h3>{{ player.name }}</h3>
+    <p>{{ player.description }}</p>
+    <dl>
+      <div>
+        <dt>
+          Games Played
+        </dt>
+        <dd>
+          {{ player.games | number }}
+        </dd>
+      </div>
+      <div>
+        <dt>
+          Points Scored
+        </dt>
+        <dd>
+          {{ player.points | number }}
+        </dd>
+      </div>
+      <div>
+        <dt>
+          Field Goal Percentage
+        </dt>
+        <dd>
+          {{ player.fieldGoalPercentage | percent:'.1' }}
+        </dd>
+      </div>
+      <div>
+        <dt>
+          Three Point Percentage
+        </dt>
+        <dd>
+          {{ player.threePointPercentage | percent:'.1' }}
+        </dd>
+      </div>
+    </dl>
+  </section>

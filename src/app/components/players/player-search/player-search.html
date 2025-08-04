@@ -1,0 +1,15 @@
+<search cdkScrollable>
+    <section>
+      <label for="search">Search Players</label>
+      <input #searchField type="search" id="search" autocomplete="off" [(ngModel)]="searchText" [formControl]="search" placeholder="Search by entering a player name" />
+      <em>Player Components Visible: {{ playerComponentsCount() }}</em>
+    </section>
+    <div>
+      @for (player of filteredPlayers(); track player.name) {
+        <app-player [player]="player"></app-player>
+      } @empty {
+        <p>Sorry, we couldn't find any players with the name you entered</p>
+      }
+    </div>
+  </search>
+

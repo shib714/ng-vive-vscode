@@ -1,0 +1,72 @@
+<section>
+    <img [ngSrc]="'assets/' + player.imageName + '.avif'" width="1040" height="760" />
+    <h2>{{ player.name }}</h2>
+    <dl>
+       
+        <div>
+            <dt>
+                Games Played
+            </dt>
+            <dd>
+                {{ player.games | number }}
+            </dd>
+        </div>
+        <div>
+            <dt>
+                Points
+            </dt>
+            <dd>
+                {{ player.points | number }}
+            </dd>
+        </div>
+        <div>
+            <dt>
+                FieldGoal%
+            </dt>
+            <dd>
+                {{ player.fieldGoalPercentage | percent:'.1' }}
+            </dd>
+        </div>
+        <div>
+            <dt>
+                3 Point%
+            </dt>
+            <dd>
+                {{ player.threePointPercentage | percent:'.1' }}
+            </dd>
+        </div>
+    </dl>
+
+    <button cdkOverlayOrigin #trigger="cdkOverlayOrigin" (click)="detailsOpen = !detailsOpen" [class.open]="detailsOpen"
+        title="Player Details">
+        &#8942;
+        <span class="cdk-visually-hidden">
+            Player Details
+        </span>
+    </button>
+    <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="detailsOpen"
+        cdkConnectedOverlayWidth="60%" (overlayOutsideClick)="detailsOpen = false" (detach)="detailsOpen = false"
+        [cdkConnectedOverlayPositions]="[
+        {
+          originX: 'start',
+          originY: 'center',
+          overlayX: 'end',
+          overlayY: 'center',
+        },
+        {
+          originX: 'start',
+          originY: 'top',
+          overlayX: 'end',
+          overlayY: 'top',
+        },
+        {
+          originX: 'start',
+          originY: 'bottom',
+          overlayX: 'end',
+          overlayY: 'bottom'
+        }
+      ]" cdkConnectedOverlayPush="true" [cdkConnectedOverlayViewportMargin]="7"
+        [cdkConnectedOverlayScrollStrategy]="scrollStrategy">
+         <app-player-details [player]="player"></app-player-details> 
+    </ng-template> 
+</section>
